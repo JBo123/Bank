@@ -3,11 +3,13 @@ package org.delta.bank.moneyTransfer;
 import org.delta.bank.account.BaseBankAccount;
 
 public class ValidationService {
+    public void validateAccountBalanceAfterTransfer(
+            double accountValue,
+            double transferValue
+    ) throws Exception {
 
-    public void validate(BaseBankAccount sourceAccount, double value) throws Exception{
-        if(sourceAccount.getBalance() < value){
+        if (accountValue < transferValue) {
             throw new Exception("");
         }
-        else return;
     }
 }

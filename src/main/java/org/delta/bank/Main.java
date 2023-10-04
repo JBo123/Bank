@@ -5,6 +5,10 @@ package org.delta.bank;
 public class Main {
     public static void main(String[] args) {
 
-        Bank bank = new Bank();
-    }
+        try {
+            Bank bank = new Bank();
+            bank.run();
+        } catch (Exception e) {
+            System.out.println(e);
+        }    }
 }

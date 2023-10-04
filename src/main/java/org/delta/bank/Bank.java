@@ -7,18 +7,32 @@ import org.delta.bank.person.Owner;
 
 public class Bank {
 
-
-    public void run() throws  Exception {
+    public void run() throws Exception {
+        System.out.println("Hello bank");
 
         MoneyTransferService moneyTransferService = new MoneyTransferService();
 
-        Owner owner = new Owner("Jan", "Novák");
-        BaseBankAccount basebankAccount = new BaseBankAccount(owner, "1345", 222);
+        Owner owner = new Owner("Jakub", "Klucky");
 
-        //ATM
-        moneyTransferService.transferMoneyByATM(basebankAccount, 100);
+        BaseBankAccount bankAccount = new BaseBankAccount(owner,"x",4000);
 
-        BaseBankAccount studentBankAccount = new StudentBankAccount(owner, "1111", 333);
-        moneyTransferService.transferMoney(studentBankAccount, basebankAccount, 200);
+        BaseBankAccount secondAccount = new BaseBankAccount(owner, "38134", 6000
+        );
+
+        System.out.println(bankAccount.getBalance());
+        System.out.println(secondAccount.getBalance());
+
+        moneyTransferService.transferMoney(bankAccount, secondAccount, 2000);
+
+        System.out.println(bankAccount.getBalance());
+        System.out.println(secondAccount.getBalance());
+
+        BaseBankAccount studentAccount = new StudentBankAccount(owner, "93214192", 5000);
+
+        System.out.println(studentAccount.getBalance());
+
+        moneyTransferService.transferMoney(studentAccount, secondAccount, 200);
+
+        System.out.println(studentAccount.getBalance());
     }
 }
