@@ -26,5 +26,6 @@ public class BaseBankAccount {
     public String getOwner() {
         return owner.getFullName();
     }
+    public String getAccountNumber(){return bankAccountNumber; }
 
 }

@@ -6,13 +6,18 @@ import org.delta.bank.account.StudentBankAccount;
 import org.delta.bank.moneyTransfer.InterestTransferService;
 import org.delta.bank.moneyTransfer.MoneyTransferService;
 import org.delta.bank.person.Owner;
+import print.ConsoleLogger;
+import print.LogService;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Bank {
 
     public void run() throws Exception {
+
+        LogService logService = new LogService();
         System.out.println("Hello bank");
         List<BaseBankAccount> accounts = new LinkedList<BaseBankAccount>();
 
@@ -28,17 +33,21 @@ public class Bank {
 
         BaseBankAccount savingAccount = new BaseBankAccount(owner, "3333", 4000);
 
-        System.out.println(bankAccount.getBalance());
-        System.out.println(secondAccount.getBalance());
+
+        logService.logAccountInfo(bankAccount);
+        logService.logAccountInfo(secondAccount);
+        logService.logAccountInfo(savingAccount);
+
+
 
         moneyTransferService.transferMoney(bankAccount, secondAccount, 2000);
 
-        System.out.println(bankAccount.getBalance());
-        System.out.println(secondAccount.getBalance());
+        logService.logAccountInfo(bankAccount);
+        logService.logAccountInfo(secondAccount);
 
         BaseBankAccount studentAccount = new StudentBankAccount(owner, "93214192", 5000);
 
-        System.out.println(studentAccount.getBalance());
+        logService.logAccountInfo(studentAccount);
 
         moneyTransferService.transferMoney(studentAccount, secondAccount, 200);
 
