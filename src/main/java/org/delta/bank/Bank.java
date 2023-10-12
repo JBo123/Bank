@@ -1,11 +1,13 @@
 package org.delta.bank;
 
+import org.delta.bank.account.AccountFactory;
 import org.delta.bank.account.BaseBankAccount;
 import org.delta.bank.account.InterestAccount;
 import org.delta.bank.account.StudentBankAccount;
 import org.delta.bank.moneyTransfer.InterestTransferService;
 import org.delta.bank.moneyTransfer.MoneyTransferService;
 import org.delta.bank.person.Owner;
+import org.delta.bank.person.OwnerFactory;
 import print.ConsoleLogger;
 import print.LogService;
 
@@ -18,6 +20,8 @@ public class Bank {
     public void run() throws Exception {
 
         LogService logService = new LogService();
+        OwnerFactory ownerFactory = new OwnerFactory();
+        AccountFactory accountFactory = new AccountFactory();
         System.out.println("Hello bank");
         List<BaseBankAccount> accounts = new LinkedList<BaseBankAccount>();
 
@@ -25,9 +29,10 @@ public class Bank {
 
         MoneyTransferService moneyTransferService = new MoneyTransferService();
 
-        Owner owner = new Owner("Jakub", "Klucky");
 
-        BaseBankAccount bankAccount = new BaseBankAccount(owner,"x",4000);
+        Owner owner = ownerFactory.createOwner("Jakub", "Klucky");
+
+        BaseBankAccount bankAccount = accountFactory.createBaseBankAccount(owner,4000.0);
 
         BaseBankAccount secondAccount = new BaseBankAccount(owner, "38134", 6000);
 
