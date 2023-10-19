@@ -1,9 +1,7 @@
 package org.delta.bank;
 
-import org.delta.bank.account.AccountFactory;
-import org.delta.bank.account.BaseBankAccount;
-import org.delta.bank.account.InterestAccount;
-import org.delta.bank.account.StudentBankAccount;
+import jakarta.inject.Inject;
+import org.delta.bank.account.*;
 import org.delta.bank.moneyTransfer.InterestTransferService;
 import org.delta.bank.moneyTransfer.MoneyTransferService;
 import org.delta.bank.person.Owner;
@@ -17,26 +15,32 @@ import java.util.logging.Logger;
 
 public class Bank {
 
+    @Inject private LogService logService;
+    @Inject private OwnerFactory ownerFactory;
+    @Inject private AccountFactory accountFactory;
+    @Inject private InterestTransferService interestTransferService;
+    @Inject private MoneyTransferService moneyTransferService;
+
     public void run() throws Exception {
 
-        LogService logService = new LogService();
-        OwnerFactory ownerFactory = new OwnerFactory();
-        AccountFactory accountFactory = new AccountFactory();
+       // LogService logService = new LogService();
+       // OwnerFactory ownerFactory = new OwnerFactory();
+        //AccountFactory accountFactory = new AccountFactory();
         System.out.println("Hello bank");
         List<BaseBankAccount> accounts = new LinkedList<BaseBankAccount>();
 
-        InterestTransferService interestTransferService = new InterestTransferService();
+        //InterestTransferService interestTransferService = new InterestTransferService();
 
-        MoneyTransferService moneyTransferService = new MoneyTransferService();
+        //MoneyTransferService moneyTransferService = new MoneyTransferService();
 
 
         Owner owner = ownerFactory.createOwner("Jakub", "Klucky");
 
         BaseBankAccount bankAccount = accountFactory.createBaseBankAccount(owner,4000.0);
 
-        BaseBankAccount secondAccount = new BaseBankAccount(owner, "38134", 6000);
+        BaseBankAccount secondAccount = accountFactory.createBaseBankAccount(owner,  6000.0);
 
-        BaseBankAccount savingAccount = new BaseBankAccount(owner, "3333", 4000);
+        SavingBankAccount savingAccount = accountFactory.createSavingBankAccount(owner, 4000.0);
 
 
         logService.logAccountInfo(bankAccount);
@@ -50,7 +54,7 @@ public class Bank {
         logService.logAccountInfo(bankAccount);
         logService.logAccountInfo(secondAccount);
 
-        BaseBankAccount studentAccount = new StudentBankAccount(owner, "93214192", 5000);
+        BaseBankAccount studentAccount = accountFactory.createStudentBankAccount(owner, 5000.0);
 
         logService.logAccountInfo(studentAccount);
 

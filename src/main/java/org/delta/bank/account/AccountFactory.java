@@ -1,15 +1,13 @@
 package org.delta.bank.account;
 
+import jakarta.inject.Inject;
 import org.delta.bank.person.Owner;
 import print.LogService;
 
 public class AccountFactory {
-    private AccountNumberGeneratorService accountNumberGeneratorService;
+   @Inject private AccountNumberGeneratorService accountNumberGeneratorService;
 
-    public AccountFactory(){
 
-        this.accountNumberGeneratorService = new AccountNumberGeneratorService();
-    }
 
     public BaseBankAccount createBaseBankAccount(Owner owner,
                                                  Double balnce){

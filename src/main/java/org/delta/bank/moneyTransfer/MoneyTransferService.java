@@ -1,10 +1,11 @@
 package org.delta.bank.moneyTransfer;
 
+import com.google.inject.Inject;
 import org.delta.bank.account.BaseBankAccount;
 
 public class MoneyTransferService {
-    ValidationService validationService = new ValidationService();
-    FeeCalculationService feeCalculationService = new FeeCalculationService();
+    @Inject private ValidationService validationService;
+    @Inject private FeeCalculationService feeCalculationService;
 
     public void transferMoney(
             BaseBankAccount sourceAccount,

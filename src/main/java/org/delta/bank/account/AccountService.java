@@ -1,5 +1,7 @@
 package org.delta.bank.account;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.delta.bank.person.Owner;
 import org.delta.bank.person.OwnerFactory;
 import print.LogService;
@@ -7,19 +9,16 @@ import print.LogService;
 import java.util.HashMap;
 import java.util.Map;
 
+@Singleton
 public class AccountService {
 
-    private LogService logService;
+    @Inject private LogService logService;
 
-    private final AccountFactory accountFactory;
+    @Inject AccountFactory accountFactory;
     private Map<String, BaseBankAccount> accounts;
 
     public AccountService(){
         this.accounts = new HashMap<>();
-
-        this.accountFactory = new AccountFactory();
-
-        this.logService = new LogService();
     }
 
     public void createAndStoreNewBaseBankAccount(Owner owner,

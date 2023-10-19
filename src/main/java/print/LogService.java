@@ -1,9 +1,10 @@
 package print;
 
+import jakarta.inject.Inject;
 import org.delta.bank.account.BaseBankAccount;
 
 public class LogService {
-    private final LoggerInterface logger = new ConsoleLogger();
+    @Inject LoggerInterface logger = new ConsoleLogger();
 
     public void log(String message) {
         logger.log(message);
