@@ -27,7 +27,7 @@ public class AccountService {
 
         BaseBankAccount bankAccount = accountFactory.createBaseBankAccount(owner, balance);
 
-        this.accounts.put(bankAccount.getAccountNumber(), bankAccount);
+        this.accounts.put(bankAccount.getAccountNumber() , bankAccount);
         this.logService.logAccountInfo(bankAccount);
 
     }
