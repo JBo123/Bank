@@ -24,9 +24,10 @@ public class AccountService {
     public void createAndStoreNewBaseBankAccount(Owner owner,
                                              double balance){
 
-        BaseBankAccount bankAccount = accountFactory.createBaseBankAccount(owner, balance);
+        BaseBankAccount bankAccount = accountFactory.createBaseBankAccount(owner,
+                balance);
 
-        this.accounts.put(bankAccount.getAccountNumber() , bankAccount);
+        this.accounts.put(bankAccount.getAccountNumber(), bankAccount);
         this.logService.logAccountInfo(bankAccount);
 
     }

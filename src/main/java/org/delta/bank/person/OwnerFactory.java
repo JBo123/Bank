@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class OwnerFactory {
 
-    private OwnerIdGeneratorService ownerIdGeneratorService;
+    @Inject OwnerIdGeneratorService ownerIdGeneratorService;
 
     @Inject LogService logService;
 

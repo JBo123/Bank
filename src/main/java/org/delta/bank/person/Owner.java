@@ -22,4 +22,8 @@ public class Owner {
     public UUID getId(){
         return id;
     }
+
+    public String getFirstName(){ return firstName;}
+
+    public String getLastName(){ return lastName;}
 }

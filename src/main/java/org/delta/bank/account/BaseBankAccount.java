@@ -8,7 +8,9 @@ public class BaseBankAccount {
     protected String bankAccountNumber;
     protected double balance;
 
-    public BaseBankAccount(Owner owner, String bankAccountNumber, double balance){
+    public BaseBankAccount(Owner owner,
+                           String bankAccountNumber,
+                           double balance){
 
         this.owner = owner;
         this.bankAccountNumber = bankAccountNumber;

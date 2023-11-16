@@ -6,6 +6,7 @@ import org.delta.bank.moneyTransfer.InterestTransferService;
 import org.delta.bank.moneyTransfer.MoneyTransferService;
 import org.delta.bank.person.Owner;
 import org.delta.bank.person.OwnerFactory;
+import org.delta.bank.person.OwnerToJsonService;
 import print.ConsoleLogger;
 import print.LogService;
 
@@ -20,6 +21,7 @@ public class Bank {
     @Inject private AccountFactory accountFactory;
     @Inject private InterestTransferService interestTransferService;
     @Inject private MoneyTransferService moneyTransferService;
+    @Inject private OwnerToJsonService ownerToJsonService;
 
     public void run() throws Exception {
 
@@ -46,6 +48,7 @@ public class Bank {
         logService.logAccountInfo(bankAccount);
         logService.logAccountInfo(secondAccount);
         logService.logAccountInfo(savingAccount);
+        logService.log(ownerToJsonService.OwnerToJson(owner));
 
 
 
